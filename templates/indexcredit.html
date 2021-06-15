@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>ML API</title>
+</head>
+<body>
+<h1>credit card fraud</h1>
+<!-- Main Input For Receiving Query to our ML -->
+<form action="{{ url_for('predict')}}"method="post">
+<input type="text" name="V4" placeholder="V4" required="required" />
+<input type="text" name="V14" placeholder="V14" required="required" />
+<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+</form>
+<br>
+<br>
+{{ prediction_text }}
+</body>
+</html>
