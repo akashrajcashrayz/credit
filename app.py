@@ -1,16 +1,11 @@
-from google.colab import drive
-drive.mount('/content/drive')
 from flask import Flask, request, render_template
-!pip install flask-ngrok
-from flask_ngrok import run_with_ngrok
 
 import numpy as np
 import pickle
 import joblib
 
 # Create Flask object to run
-app = Flask(__name__,template_folder= 'drive/My Drive/lstmrpoject' )
-run_with_ngrok(app)
+app = Flask(__name__,template_folder= 'templates' )
 
 @app.route('/')
 def home():
@@ -19,7 +14,7 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
   try:
-    knnIrisModel = joblib.load('/content/drive/My Drive/dataset/assesment.pkl')
+    knnIrisModel = joblib.load('assesment.pkl')
     int_features = [float(x) for x in request.form.values()]
 
     V4 = request.form.get('V4')
